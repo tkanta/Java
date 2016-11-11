@@ -1,4 +1,4 @@
-package com.strategy1;
+package com.designpattern.strategy1;
 
 public class CanFlyStrategy implements FlysStrategy {
 
