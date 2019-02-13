@@ -6,25 +6,25 @@ import java.util.Queue;
 public class BtreeInsertion {
 	
 	
-	static class Node{
-		int value;
-		Node left, right;
+	static class Node<T>{
+		T value;
+		Node<T> left, right;
 		
-		Node(int val){
+		Node(T val){
 			this.value = val;
 			this.left = null;
 			this.right = null;
 		}
 	}
 	
-	static Node root;
+	static Node<Integer> root;
 	//static Node temp = root;
 	
 	/**
 	 * In order traversal
 	 * @param temp
 	 */
-	static void inOrder(Node temp) {
+	static void inOrder(Node<Integer> temp) {
 		if(temp == null) {
 			return;
 		}
@@ -33,8 +33,8 @@ public class BtreeInsertion {
 		inOrder(temp.right);
 	}
 	
-	static void insertValue(Node temp, int val) {
-		Queue<Node> tempQueue = new LinkedList<>();
+	static void insertValue(Node<Integer> temp, int val) {
+		Queue<Node<Integer>> tempQueue = new LinkedList<>();
 		tempQueue.add(temp);
 		
 		while(!tempQueue.isEmpty()) {
@@ -42,14 +42,14 @@ public class BtreeInsertion {
 			tempQueue.remove();
 			
 			if(temp.left == null) {
-				temp.left = new Node(val);
+				temp.left = new Node<Integer>(val);
 				break;
 			}else {
 				tempQueue.add(temp.left);
 			}
 			
 			if(temp.right == null) {
-				temp.right = new Node(val);
+				temp.right = new Node<Integer>(val);
 				break;
 			}else {
 				tempQueue.add(temp.right);
@@ -59,12 +59,12 @@ public class BtreeInsertion {
 	}
 	
 	public static void main(String[] args) {
-		root = new Node(10); 
-        root.left = new Node(11); 
-        root.left.left = new Node(7); 
-        root.right = new Node(9); 
-        root.right.left = new Node(15); 
-        root.right.right = new Node(8); 
+		root = new Node<Integer>(10); 
+        root.left = new Node<Integer>(11); 
+        root.left.left = new Node<Integer>(7); 
+        root.right = new Node<Integer>(9); 
+        root.right.left = new Node<Integer>(15); 
+        root.right.right = new Node<Integer>(8); 
        
         System.out.print( "Inorder traversal before insertion:"); 
         inOrder(root); 
