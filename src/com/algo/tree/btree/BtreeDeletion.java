@@ -27,22 +27,24 @@ public class BtreeDeletion {
 		inOrder(node.right);
 	}
 	
-	public static void deleteNode(Node<Integer> temp, Integer key) {
+	public static void deleteNode(Node<Integer> root, Integer keyToBeDeleted) {
 		Queue<Node<Integer>> queue = new LinkedList<>();
-		queue.add(temp);
-		Node<Integer> keyNode = null;
+		queue.add(root);
+		Node<Integer> temp = null;
+		Node<Integer> nodeTobeReplaced = null;
 		Node<Integer> tempParent = null;
 		
 		while(!queue.isEmpty()) {
 			temp = queue.peek();
 			queue.remove();
 			
-			if(temp.key == key) {
-				keyNode = temp;
+			if(temp.key == keyToBeDeleted) {
+				nodeTobeReplaced = temp;
 			}
 			
 			if(null != temp.left) {
 				queue.add(temp.left);
+				tempParent = temp;
 			}
 			
 			if(null != temp.right) {
@@ -51,7 +53,7 @@ public class BtreeDeletion {
 			}
 		}
 		
-		keyNode.key = temp.key;
+		nodeTobeReplaced.key = temp.key;
 		temp = null;
 		tempParent.right = null;
 		
