@@ -25,9 +25,9 @@ public class AtomicIntegerTest {
 	
 	
 	static void accumulateAndGet() {
-		IntStream.range(0, 11).forEach(i -> {
-			//System.out.println(i);
-			Runnable task = () -> atomicInt.accumulateAndGet(i, (n,m)->n+m);
+		IntStream.range(0, 10).forEach(i -> {
+			System.out.println(i);
+			Runnable task = () -> atomicInt.accumulateAndGet(i,  (n,m)->n+m);
 			service.submit(task);
 		});
 		
