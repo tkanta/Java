@@ -12,5 +12,8 @@ public class TaxiElement implements Element {
 	public int getFare() {
 		return 23;
 	}
-
+	
+	public int calculateDistance() {
+		return 54;
+	}
 }

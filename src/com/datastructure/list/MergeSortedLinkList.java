@@ -1,4 +1,4 @@
-package com.algo.list;
+package com.datastructure.list;
 
 import java.util.Arrays;
 import java.util.Iterator;

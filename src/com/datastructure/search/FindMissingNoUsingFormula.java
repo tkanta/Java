@@ -1,4 +1,4 @@
-package com.algo.search;
+package com.datastructure.search;
 
 public class FindMissingNoUsingFormula {
 

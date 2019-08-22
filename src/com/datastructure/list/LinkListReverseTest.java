@@ -1,4 +1,4 @@
-package com.algo.list;
+package com.datastructure.list;
 
 public class LinkListReverseTest {
     public static void main(String args[]) {

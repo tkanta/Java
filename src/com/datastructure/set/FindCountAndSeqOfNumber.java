@@ -1,4 +1,4 @@
-package com.algo.set;
+package com.datastructure.set;
 
 import java.util.HashMap;
 import java.util.HashSet;

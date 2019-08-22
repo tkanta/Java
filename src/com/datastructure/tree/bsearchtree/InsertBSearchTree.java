@@ -1,4 +1,4 @@
-package com.algo.tree.bsearchtree;
+package com.datastructure.tree.bsearchtree;
 
 public class InsertBSearchTree<T extends Number> {
 	

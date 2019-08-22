@@ -1,4 +1,4 @@
-package com.algo.list;
+package com.datastructure.list;
 
 public class LinkListReverse<T> {
 

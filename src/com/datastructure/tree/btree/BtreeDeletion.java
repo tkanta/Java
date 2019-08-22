@@ -1,4 +1,4 @@
-package com.algo.tree.btree;
+package com.datastructure.tree.btree;
 
 import java.util.LinkedList;
 import java.util.Queue;
