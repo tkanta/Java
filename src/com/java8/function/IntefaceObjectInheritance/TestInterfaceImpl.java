@@ -1,4 +1,4 @@
-package com.java8.IntefaceObjectInheritance;
+package com.java8.function.IntefaceObjectInheritance;
 
 public class TestInterfaceImpl implements TestInterface {
     public void testMethod(){

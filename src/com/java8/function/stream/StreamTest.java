@@ -1,4 +1,4 @@
-package com.java8.stream;
+package com.java8.function.stream;
 
 import java.util.*;
 import java.util.function.Consumer;

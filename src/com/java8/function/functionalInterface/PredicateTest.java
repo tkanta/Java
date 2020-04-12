@@ -1,4 +1,4 @@
-package com.java8.functionalInterface;
+package com.java8.function.functionalInterface;
 
 import java.util.Objects;
 import java.util.function.Predicate;
