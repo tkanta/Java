@@ -9,7 +9,7 @@ public class PredicateTest {
         Predicate<String> predicate = (s) -> s.length() > 0;
 
         System.out.println(predicate.test("foo"));              // true
-        predicate.negate().test("foo");     // false
+        System.out.println(predicate.negate().test("foo"));     // false
 
         Predicate<Boolean> nonNull = Objects::nonNull;
         Predicate<Boolean> isNull = Objects::isNull;
