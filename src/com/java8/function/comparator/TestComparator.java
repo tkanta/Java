@@ -10,7 +10,7 @@ public class TestComparator {
 	    List<Employee> employees  = new ArrayList<>();
 	    employees.add(new Employee(6,"Yash", "Chopra", 25));
 	    employees.add(new Employee(2,"Aman", "Sharma", 28));
-	    employees.add(new Employee(12,"Aman", "Tataudi", 28));
+	    employees.add(new Employee(12,"Aman", "Sharma", 29));
 	    employees.add(new Employee(3,"Aakash", "Yaadav", 52));
 	    employees.add(new Employee(5,"David", "Kameron", 19));
 	    employees.add(new Employee(4,"James", "Hedge", 72));
@@ -24,16 +24,20 @@ public class TestComparator {
 	
 	public static void main(String[] args) {
 		List<Employee> employees  = getEmployees();
-	     
-		Comparator<Employee> com1 = Comparator.comparing(Employee::getFirstName).thenComparing(Employee::getLastName)
-				.thenComparing(Employee::getAge);
+	    
+		// Default comparison of Age is ASC (natural order), so We have created a DESC comparator
+		Comparator<Employee> ageDesc = (E1, E2) -> E2.getAge().compareTo(E1.getAge()); 
+	    
+		Comparator<Employee> grpcom1 = Comparator.comparing(Employee::getFirstName).thenComparing(Employee::getLastName)
+				.thenComparing(ageDesc);
+		
 		Comparator<Employee> com2 = Comparator.comparing(e -> e.getFirstName());
 		Comparator<Employee> com3 = Comparator.comparing(e -> e.getFirstName());
 	    //Sort all employees by first name
 	    //employees.sort(Comparator.comparing(e -> e.getFirstName()));
 	     
 	    //OR you can use below
-	    employees.sort(com1);
+	    employees.sort(grpcom1);
 	     
 	    //Let's print the sorted list
 	    System.out.println(employees);
