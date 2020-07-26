@@ -17,7 +17,9 @@ public class EmployeePredicates {
     public static Predicate<Employee> isAgeMoreThan(Integer age) {
         return p -> p.getAge() > age;
     }
-     
+    
+    
+    
     public static List<Employee> filterEmployees (List<Employee> employees, 
                                                 Predicate<Employee> predicate) 
     {
@@ -25,4 +27,15 @@ public class EmployeePredicates {
                     .filter( predicate )
                     .collect(Collectors.<Employee>toList());
     }
+    
+    //------- using method reference ---------
+    //when using method reference the implemented method should be mimicking the functional interface method signature.
+    // basically arguments, return type etc.
+    
+    public static boolean filterEmp(Employee e) {
+    	return   e.getAge() > 21 && e.getGender().equalsIgnoreCase("M");
+    }
+	public static List<Employee> filterEmp(List<Employee> employees) {
+		return employees.stream().filter(EmployeePredicates::filterEmp).collect(Collectors.<Employee>toList());
+	}
 }
