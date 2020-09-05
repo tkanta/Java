@@ -22,6 +22,9 @@ public class TestEmployeePredicates {
         employees.addAll(Arrays.asList(new Employee[]{e1,e2,e3,e4,e5,e6,e7,e8,e9,e10}));
                 
         System.out.println( EmployeePredicates.filterEmployees(employees, EmployeePredicates.isAdultMale()) );
+        
+        //----- Using Method reference ------
+        System.out.println( "Method ref: "+EmployeePredicates.filterEmp(employees) );
          
         System.out.println( EmployeePredicates.filterEmployees(employees, EmployeePredicates.isAdultFemale()) );
          
