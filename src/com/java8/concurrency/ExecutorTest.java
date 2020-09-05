@@ -15,12 +15,13 @@ public class ExecutorTest {
 
     private static Callable<String> callableInstance(String result, long sleepSeconds){
         return () -> {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(sleepSeconds);
             return result;
         };
     }
-    public static void main(String[] args) {
-        ExecutorService executorService = Executors.newWorkStealingPool();
+    
+    private static void invokeAny() {
+    	ExecutorService executorService = Executors.newFixedThreadPool(2);
 
         List<Callable<String>> callableList = Arrays.asList(
                 callableInstance("task1", 1),
@@ -34,5 +35,39 @@ public class ExecutorTest {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+    }
+    
+    private static void invokeAll() {
+    	ExecutorService executorService = Executors.newWorkStealingPool();
+    	List<Callable<String>> callableList = Arrays.asList(
+                callableInstance("task1", 1),
+                callableInstance("task2", 2),
+                callableInstance("task3", 3));
+        try {
+            executorService.invokeAll(callableList)
+            	.stream()
+					.map( future -> {
+						String result="";
+						try {
+							result = future.get();
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (ExecutionException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						return result;
+					})
+					.map( s -> "result :"+s ).forEach(System.out::println);
+            
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void main(String[] args) {
+    	invokeAll();
+    	System.out.println("---------------");
+    	invokeAny();
     }
 }
