@@ -11,5 +11,9 @@ public class PatternAsPredicate {
 		
 		Predicate<String> patternMatchToGivenString = Pattern.compile("123132").asMatchPredicate();
 		System.out.println("Check if pattern exactly Match To Given String : "+patternMatchToGivenString.test("123132"));
+		
+		Pattern pattern = Pattern.compile("123132");
+		System.out.println(pattern.matcher("123132").matches()); // same as asMatchPredicate() method
+		System.out.println(Pattern.quote("1313132"));
 	}
 }
