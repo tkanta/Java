@@ -1,8 +1,11 @@
 package com.java8.function.stream;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ListStream {
     public static void main(String[] args) {
@@ -28,5 +31,22 @@ public class ListStream {
 
 
         optional.ifPresent(System.out::println);
+        
+        //======================= List<List<String>> ====================
+        List<List<String>> list = Arrays.asList(
+      		  Arrays.asList("a", "c"),
+      		  Arrays.asList("b"));
+      		System.out.println(list);
+      		
+		System.out.println(list
+				  .stream()
+				  .flatMap(Collection::stream)
+				  .map( l -> l.length() )
+				  .collect(Collectors.toList()));
+		
+		System.out.println(list
+				  .stream()
+				  .map(l -> l.size() )
+				  .collect(Collectors.toList()));
     }
 }
